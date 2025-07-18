@@ -29,3 +29,32 @@ The schema includes the following tables:
 ## 📁 Project Structure
 
 # Sports-Tournament-Tracker
+
+---
+
+## 📊 Key Features
+
+- Insert and track real match results
+- Query top scorers and MVPs
+- View match-by-match stats
+- Generate team leaderboards
+- Use CTEs to calculate average goals and assists
+
+---
+
+## 🧪 Sample Queries
+
+```sql
+-- Top 5 players by goals
+SELECT PlayerID, SUM(Goals) AS TotalGoals
+FROM Stats
+GROUP BY PlayerID
+ORDER BY TotalGoals DESC
+LIMIT 5;
+
+-- Team leaderboard by match wins
+SELECT t.Name, COUNT(*) AS Wins
+FROM Matches m
+JOIN Teams t ON m.WinnerTeamID = t.TeamID
+GROUP BY t.Name
+ORDER BY Wins DESC;
